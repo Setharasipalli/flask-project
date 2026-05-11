@@ -50,9 +50,9 @@ def update(id):
        
     else:
         return render_template('update.html' , task = task)
-@app.route("/")   
-def home():
-    return "Hello, Railway!"
+with app.app_context():
+    db.create_all()
+
 if __name__ == "__main__":
     import os
     port = int(os.environ.get("PORT", 5000))
