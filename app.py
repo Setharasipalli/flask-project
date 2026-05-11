@@ -36,7 +36,8 @@ def delete(id):
         return redirect('/')
     except:
             return "There was an issue deleting your task"  
-@app.route('/update/<int:id>' , methods=['POST' , 'GET'])     
+@app.route('/update/<int:id>' , methods=['POST' , 'GET'])  
+
 def update(id):
     task = Todo.query.get_or_404(id)
     if  request.method == 'POST':
@@ -49,7 +50,9 @@ def update(id):
        
     else:
         return render_template('update.html' , task = task)
-
+@app.route("/")   
+def home():
+    return "Hello, Railway!"
 if __name__ == "__main__":
     import os
     port = int(os.environ.get("PORT", 5000))
