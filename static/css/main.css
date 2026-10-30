@@ -1,42 +1,544 @@
-body{
-    background-color: #f5f5f5;
-    font-family: Arial;
+
+/* General Page Styling */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f4f7fc;
+    font-family: Arial, sans-serif;
+    color: #1e293b;
 }
 
+/* Main Heading */
 h1 {
-    text-align:center;
-}
-td {
-    padding : 10px;
     text-align: center;
+    color: #1e3a8a;
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 25px;
+    text-shadow: 1px 1px 2px #cbd5e1;
 }
-.content{
-    width: 60%;
-    margin: auto;
-    margin-top: 50px;
+
+/* Main Content Container */
+.content {
+    width: 80%;
+    max-width: 1000px;
+    margin: 70px auto 40px;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 14px;
+    box-shadow: 0 8px 25px rgba(15, 23, 42, 0.08);
+    box-sizing: border-box;
 }
-table{
+
+/* Table Styling */
+table {
     width: 100%;
     border-collapse: collapse;
-    background-color: white;
-}
-th{
-    background-color: purple;
-    color: white;
-    padding: 10px;
-}
-tr:hover{
-    background-color: lightgrey;
-}
-input[type="text"]{
-    width: 70%;
-    padding: 10px;
-    margin-top: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
 }
 
-input[type="submit"]{
-    padding: 10px;
-    background-color: purple;
-    color: white;
+/* Table Header */
+th {
+    background-color: #2563eb;
+    color: #ffffff;
+    padding: 15px 12px;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+/* Table Cells */
+td {
+    padding: 14px 12px;
+    text-align: center;
+    border-bottom: 1px solid #e2e8f0;
+    font-size: 14px;
+}
+
+/* Alternating Rows */
+tbody tr:nth-child(even) {
+    background-color: #f8fafc;
+}
+
+/* Hover Effect */
+tbody tr:hover {
+    background-color: #eff6ff;
+    transition: background-color 0.2s ease;
+}
+
+/* Text Input */
+input[type="text"] {
+    width: 70%;
+    padding: 12px 14px;
+    margin-top: 20px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    outline: none;
+    font-size: 14px;
+    box-sizing: border-box;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+/* Input Focus */
+input[type="text"]:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+/* Submit Button */
+input[type="submit"] {
+    padding: 12px 24px;
+    margin-top: 15px;
+    background-color: #2563eb;
+    color: #ffffff;
     border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+/* Submit Hover */
+input[type="submit"]:hover {
+    background-color: #1d4ed8;
+    transform: translateY(-2px);
+}
+
+/* Top Corner Link */
+.top-corner {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    font-weight: bold;
+}
+
+.top-corner a {
+    color: #2563eb;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.2s;
+}
+
+.top-corner a:hover {
+    color: #1e3a8a;
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .content {
+        width: 95%;
+        margin-top: 70px;
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 25px;
+    }
+
+    table {
+        font-size: 12px;
+    }
+
+    th, td {
+        padding: 10px 6px;
+    }
+
+    input[type="text"] {
+        width: 100%;
+    }
+
+    .top-corner {
+        top: 15px;
+        right: 15px;
+    }
+}
+.learning-search button{
+    background-color: #2563eb;
+    width:100px;
+    height:40px;
+    color:white;
+    border-radius: 10px;
+}
+/* Learning Paths */
+.learning-paths {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    padding: 30px;
+}
+
+/* Individual Learning Path Box */
+.learning-card {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    padding: 30px;
+    min-height: 220px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+.learning-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 7px 18px rgba(0, 0, 0, 0.12);
+}
+/* Role */
+.learning-card h2 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 24px;
+}
+
+/* Description */
+.learning-card p {
+    color: #555;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/* View Roadmap Button */
+.learning-card a {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 20px;
+    background-color: #2563eb;
+    color: white;
+    text-decoration: none;
+    border-radius: 7px;
+}
+
+/* Hover */
+.learning-card a:hover {
+    background-color: #1d4ed8;
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+    .learning-paths {
+        grid-template-columns: 1fr;
+    }
+}
+.roadmap-item h2 {
+    color:#2563eb;
+    text-shadow:1px 1px 3px #aaa;
+}
+.roadmap-item h4 {
+    color:rgb(16, 49, 87);
+    text-shadow: 1px 1px 3px #aaa;
+}
+.box {
+    width:2000;
+    height:fit-content;
+    border: 2px solid rgb(77, 118, 148);
+}
+.category-grid {
+    display:grid;
+    grid-template-columns:repeat(2 , 1fr);
+    gap:30px;
+    padding:30px;
+
+}
+@media (max-width: 700px){
+    .category-grid {
+        grid-template-columns: 1fr;
+    }
+}
+.category-card {
+    border:1px solid #ddd;
+    padding:30px;
+    border-radius: 10px;
+    background-color: white;
+
+}
+.category-card a {
+    display: inline-block;
+    background-color:#2563eb;
+    padding:12px 20px;
+    border-radius: 4px;
+    margin-top: 20px;
+    color:white;
+    text-decoration:none;
+}
+.category-card:hover {
+    transform:translateY(-3px);
+    box-shadow: 0 7px 18px rgba(0, 0, 0, 0.12);
+}
+.category-card a:hover {
+    background-color:#1d4ed8;
+}
+.search-box button {
+    background-color: #2563eb;
+    color:white;
+    padding:10px 25px;
+    border-radius:10px;
+}
+.test-card {
+    border:1px solid #ddd;
+    padding:30px;
+    border-radius: 10px;
+    background-color: white;
+}
+.test-card a{
+    display:inline-block;
+    background-color: #2563eb;
+    padding:12px 20px;
+    color:white;
+    text-decoration:none;
+    border-radius:4px;
+    margin-top:20px;
+}
+.test-card:hover {
+    transform:translateY(-3px);
+    box-shadow: 0 7px 18px rgba(0, 0, 0, 0.12);
+}
+.question-grid h2{
+    color:#2563eb;
+
+}
+.question-grid h3 {
+    color: #ddd;
+    background-color: #2563eb;
+    width:150px;
+    padding:5px;
+    border-radius:5px;
+}
+.question-card {
+    border:1px solid#ddd;
+    padding:10px;
+    border-radius: 5px;
+}
+.submit-button button{
+    background-color:#2563eb;
+    color:#ddd;
+    padding:10px;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+/* =====================================
+   CAREERDECK - GET STARTED PAGE
+   ===================================== */
+
+/* Welcome section */
+.career-journey {
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    padding: 55px 30px;
+    margin: 25px 0 35px;
+    border-radius: 18px;
+    background: linear-gradient(135deg, #eef4ff, #f8faff);
+    border: 1px solid #e0e9fa;
+}
+
+.journey-label {
+    display: inline-block;
+    color: #1765F5;
+    background: #e2ebff;
+    padding: 7px 14px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+.career-journey h1 {
+    color: #11223E;
+    font-size: clamp(26px, 3vw, 38px);
+    font-weight: 750;
+    line-height: 1.3;
+    margin: 20px 0 14px;
+}
+
+.career-journey p {
+    max-width: 650px;
+    margin: 0 auto;
+    color: #52627a;
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+/* Primary button */
+.career-journey .journey-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 25px;
+    padding: 12px 23px;
+    background: #1765F5;
+    color: #ffffff;
+    border: 1px solid #1765F5;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    transition: background 0.2s ease,
+                transform 0.2s ease,
+                box-shadow 0.2s ease;
+}
+
+.career-journey .journey-btn:hover {
+    background: #1053d4;
+    border-color: #1053d4;
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 14px rgba(23, 101, 245, 0.2);
+}
+
+/* Career steps heading */
+.career-steps {
+    margin: 0 0 35px;
+    scroll-margin-top: 30px;
+}
+
+.career-steps > h2 {
+    color: #11223E;
+    text-align: center;
+    font-size: 27px;
+    font-weight: 700;
+    margin: 0 0 10px;
+}
+
+.career-steps > .section-description {
+    color: #64748b;
+    text-align: center;
+    font-size: 14px;
+    line-height: 1.7;
+    margin: 0 auto 28px;
+}
+
+/* Three-column layout */
+.steps-container {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+    align-items: stretch;
+}
+
+/* Individual feature cards */
+.steps-container .step-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    min-width: 0;
+    padding: 26px 24px;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 13px;
+    box-shadow: 0 3px 12px rgba(17, 34, 62, 0.04);
+    transition: border-color 0.2s ease,
+                box-shadow 0.2s ease,
+                transform 0.2s ease;
+}
+
+.steps-container .step-card:hover {
+    border-color: #b9d0ff;
+    box-shadow: 0 9px 24px rgba(17, 34, 62, 0.09);
+    transform: translateY(-4px);
+}
+
+/* Number badge */
+.step-card .step-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    margin-bottom: 19px;
+    border-radius: 10px;
+    background: #eaf0ff;
+    color: #1765F5;
+    font-size: 15px;
+    font-weight: 750;
+}
+
+/* Card headings */
+.steps-container .step-card h3 {
+    color: #11223E;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.45;
+    margin: 0 0 10px;
+}
+
+/* Card descriptions */
+.steps-container .step-card p {
+    color: #64748b;
+    font-size: 14px;
+    line-height: 1.8;
+    margin: 0 0 20px;
+    flex-grow: 1;
+}
+
+/* Card links */
+.steps-container .step-card a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #1765F5;
+    font-size: 14px;
+    font-weight: 650;
+    text-decoration: none;
+    margin-top: auto;
+    padding: 5px 0;
+    transition: color 0.2s ease;
+}
+
+.steps-container .step-card a:hover {
+    color: #1046ad;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+/* Keyboard accessibility */
+.career-journey a:focus-visible,
+.steps-container .step-card a:focus-visible {
+    outline: 3px solid #1765F5;
+    outline-offset: 4px;
+}
+
+/* Tablet */
+@media (max-width: 1000px) {
+    .steps-container {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+    }
+
+    .career-journey {
+        padding: 45px 24px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    .career-journey {
+        padding: 38px 18px;
+        margin: 18px 0 28px;
+        border-radius: 13px;
+    }
+
+    .career-journey h1 {
+        font-size: 27px;
+    }
+
+    .career-journey p {
+        font-size: 14px;
+    }
+
+    .career-steps > h2 {
+        font-size: 23px;
+    }
+
+    .steps-container {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 15px;
+    }
+
+    .steps-container .step-card {
+        padding: 23px 20px;
+    }
 }

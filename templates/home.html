@@ -1,0 +1,163 @@
+
+{% block body %}
+
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='css/home.css') }}">
+
+<div class="home-layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <h2>🎓 CareerDeck</h2>
+
+        <a href="{{ url_for('home') }}" class="active">Home</a>
+        <a href="{{ url_for('planner') }}">Career Planner</a>
+        <a href="{{ url_for('learning_paths') }}">Learning Paths</a>
+        <a href="{{ url_for('mock_tests') }}">Mock Tests</a>
+        <a href="{{ url_for('jobs') }}">Job Openings</a>
+
+        <hr>
+
+        {% if current_user.is_authenticated %}
+            <a href="{{ url_for('profile') }}">Profile</a>
+        {% else %}
+            <a href="{{ url_for('login') }}">Login</a>
+            <a href="{{ url_for('register') }}">Register</a>
+        {% endif %}
+    </aside>
+
+    <!-- MAIN AREA -->
+    <div class="main-area">
+
+        <!-- NAVBAR -->
+        <div class="navbar">
+
+            {% if current_user.is_authenticated %}
+
+                <a href="{{ url_for('profile') }}">
+                    {% if current_user.profile_pic %}
+                        <img
+                            src="{{ url_for('static',
+                            filename='uploads/' + current_user.profile_pic) }}"
+                            class="nav-profile"
+                            alt="Profile">
+                    {% else %}
+                        <div class="nav-profile-letter">
+                            {{ current_user.username[0]|upper }}
+                        </div>
+                    {% endif %}
+                </a>
+
+            {% else %}
+                <div class="nav-actions">
+                    <a href="{{ url_for('login') }}"
+                       class="nav-login">Login</a>
+
+                    <a href="{{ url_for('register') }}"
+                       class="nav-buttons">Sign Up</a>
+                </div>
+            {% endif %}
+
+        </div>
+
+        <section class="hero">
+
+            <div class="hero-content">
+
+                <h1>
+                    Build a Brighter Future
+                    with <span>CareerDeck</span>
+                </h1>
+
+                <p class="hero-description">
+                    CareerDeck helps students and job seekers
+                    explore career opportunities, develop
+                    in-demand skills, prepare with mock tests,
+                    discover job openings, and track their
+                    progress — all in one place.
+                </p>
+
+                <div class="hero-features">
+                    <span>🎯 Explore Careers</span>
+                    <span>📚 Learn Skills</span>
+                    <span>💡 Prepare for Success</span>
+                </div>
+
+                <a href="{{ url_for('get_started') }}"
+                   class="get-started">
+                    Get Started →
+                </a>
+
+            </div>
+
+            <div class="hero-image">
+                <img
+                    src="{{ url_for('static',
+                    filename='uploads/careerdeck.jpg') }}"
+                    alt="Students exploring career opportunities">
+            </div>
+
+        </section>
+
+        <!-- ABOUT CAREERDECK -->
+        <section class="about-section">
+
+            <h2>why CareerDeck?</h2>
+
+            <p>
+                CareerDeck is an all-in-one career development
+                platform designed to guide students and job
+                seekers throughout their professional journey.
+                It provides personalized career guidance,
+                structured learning resources, mock tests,
+                and employment opportunities to help users
+                achieve their goals.
+            </p>
+
+            <div class="features-grid">
+
+                <div class="feature-card pink">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Career Guidance</h3>
+                    <p>
+                        Discover career options based on your
+                        interests, skills, and professional goals.
+                    </p>
+                </div>
+
+                <div class="feature-card green">
+                    <div class="feature-icon">📖</div>
+                    <h3>Learn New Skills</h3>
+                    <p>
+                        Access structured learning paths and
+                        resources to develop industry-relevant
+                        skills.
+                    </p>
+                </div>
+
+                <div class="feature-card yellow">
+                    <div class="feature-icon">📝</div>
+                    <h3>Practice & Prepare</h3>
+                    <p>
+                        Improve your knowledge through topic-wise
+                        practice and mock tests.
+                    </p>
+                </div>
+
+                <div class="feature-card purple">
+                    <div class="feature-icon">💼</div>
+                    <h3>Explore Opportunities</h3>
+                    <p>
+                        Discover job openings and explore
+                        opportunities for career growth.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+</div>
+
+{% endblock %}

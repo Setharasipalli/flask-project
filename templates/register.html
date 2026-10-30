@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/auth.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<script>
+    function togglePassword() {
+        const password = document.getElementById("password");
+
+        if (password.type === "password") {
+            password.type = "text";
+            eyeIcon.classList.replace("fa-eye" , "fa-eye-slash");
+        } else {
+            password.type = "password";
+            eyeIcon.classList.replace("fa-eye-slash" , "fa-eye");
+        }
+    }
+</script>
+<body>
+
+<div class="container">
+    <div class="card">
+        <h1>Register</h1>
+
+    <form method="POST" action="">
+            {{ form.hidden_tag() }}
+
+            {{ form.username }}
+            {% for error in form.username.errors %}
+                {{ error }}
+            {% endfor %}
+
+            {{ form.email }}
+            {% for error in form.email.errors %}
+                {{ error }}
+            {% endfor %}
+            <div class = "password-box">
+            {{ form.password(id ="password")}}
+            <span class="eye" onclick="togglePassword()"><i id = "eyeIcon" class = "fa-solid fa-eye"></i></span>
+            {% for error in form.password.errors %}
+                {{ error }}
+            {% endfor %}
+            </div>
+
+            {{ form.submit }}
+    </form>
+        <p>
+            Already have an account?
+            <a href="{{ url_for('login') }}">Login</a>
+        </p>
+    </div>
+</div>
+
+</body>
+</html>

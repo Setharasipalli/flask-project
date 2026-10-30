@@ -1,0 +1,20 @@
+{%  extends "base.html" %}
+{% block body %}
+<h1>{{ path.role }}</h1>
+<div class = "roadmap">
+    {% for topic in topics %}
+    <div class = "roadmap-item">
+            <h2> Stage {{ topic.stage }}</h2>
+            <h4>{{ topic.title }}</h4>
+            <p> {{ topic.description }}</p>
+            <div class = "box">
+                <ul>
+                    {% for detail in topic.details.split('\n') %}
+                    <li>{{ detail }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

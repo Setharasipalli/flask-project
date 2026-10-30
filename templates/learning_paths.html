@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block body %}
+<div class = "learning-search">
+    <form method="GET" action = "{{ url_for('learning_paths')}}">
+        <input 
+            type = "text"
+            name = "search"
+            placeholder="search learning path...."
+            value = "{{ search }}"
+        >
+        <button type = "submit">Search</button>
+    </form>
+</div>
+<div class = "learning-paths">
+    {% for path in paths %}
+    <div class = "learning-card">
+        <h2>{{ path.role }}</h2>
+        <p>{{ path.description }}</p>
+        <a href="{{ url_for('learning_path_detail' , path_id=path.id)}}">View Roadmap</a>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

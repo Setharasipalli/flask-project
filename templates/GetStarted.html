@@ -1,0 +1,56 @@
+
+{% extends "base.html" %}
+
+{% block title %}Get Started | CareerDeck{% endblock %}
+
+{% block head %}
+
+<section class="career-journey">
+    <span class="journey-label">YOUR CAREER STARTS HERE</span>
+
+    <h1>Your Career Journey Starts Here 🚀</h1>
+
+    <p>
+        Follow a clear path to prepare for placements,
+        improve your skills, and achieve your dream job.
+    </p>
+
+    <a href="#career-steps" class="journey-btn">
+        Explore Your Journey →
+    </a>
+</section>
+
+<section class="career-steps" id="career-steps">
+    <h2>Your Path to Success</h2>
+
+    <p class="section-description">
+        Follow these three steps to become placement-ready.
+    </p>
+
+    <div class="steps-container">
+
+        <div class="step-card">
+            <span class="step-number">01</span>
+            <h3>Explore Roadmaps</h3>
+            <p>Choose your career path and learn essential skills.</p>
+            <a href="{{ url_for('learning_paths') }}">Learning Paths</a>
+        </div>
+
+        <div class="step-card">
+            <span class="step-number">02</span>
+            <h3>Practice Mock Tests</h3>
+            <p>Improve your aptitude, reasoning, and coding skills.</p>
+            <a href="{{ url_for('mock_tests') }}">Mock Tests</a>
+        </div>
+
+        <div class="step-card">
+            <span class="step-number">03</span>
+            <h3>Apply for Jobs</h3>
+            <p>Explore job opportunities and prepare your resume.</p>
+            <a href="{{ url_for('jobs') }}">Job Openings</a>
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}

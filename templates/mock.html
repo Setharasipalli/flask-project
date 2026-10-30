@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block body %}
+<h1>MOCK TESTS</h1>
+<form method = 'Get' action = "{{ url_for('mock_tests')}}" class = "search-box">
+<input 
+        type = "text"
+        name = "search"
+        placeholder="search Mock Test...."
+        value = "{{ search }}"
+        >
+    <button type = "submit">submit</button>
+</form>
+<div class="category-grid">
+    {% for category in categories %}
+    <div class="category-card">
+        <h2>{{ category[0] }}</h2>
+        <p>3 Mock Tests</p>
+        <p>20 Questions</p>
+        <a href="{{ url_for('category_tests' , category = category[0]) }}">View Tests</a>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block head %}
+    <link rel = "stylesheet"
+    href = "{{ url_for('static' , filename  = 'css/job.css')}}">
+{% endblock %}
+
+{% block body %}
+<div class = "job-page">
+    <h1>Job Openings</h1>
+    <form action="{{ url_for('jobs')}}"
+    method = "GET"
+    class = "job-search">
+        <input
+            type = "text"
+            name = "q"
+            value = "{{ query }}"
+            placeholder = "Search jobs, internships, remote jobs, locations..."
+        >
+        <button type = "submit">
+            Search
+        </button>
+    </form>
+
+    {% if jobs %}
+        <div class = "job-cards">
+            {% for job in jobs %}
+                <div class = "job-card">
+                    <h3>{{ job.title }}</h3>
+                    <p>
+                        🏢 {{ job.company.display_name }}
+                    </p>
+                    <p> 
+                        📍{{ job.location.display_name }}
+                    </p>
+                    <a
+                        href= "{{ job.redirect_url }}"
+                        target = "_blank"
+                        class = "apply-button">Apply →
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p class = "no-jobs">
+            No jobs Found.
+        </p>
+    {% endif %}
+</div>
+{% endblock %}

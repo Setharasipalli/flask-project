@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block body %}
+<div class = 'question-grid'>
+    <h1>{{ test.title }}</h1>
+    <h2>
+        {{ test.difficulty }} |
+        {{ test.total_questions }} Questions|
+        {{ test.duration }} Minutes
+    </h2>
+    <h3>
+        Time Left:
+        <span id="timer"></span>
+    </h3>
+</div>
+<form method="POST">
+    {% for question in questions %}
+    <div class="question-card">
+        <h3>
+            {{ loop.index }}.{{ question.question}}
+        </h3>
+        <label>
+            <input type ="radio"
+                   name = "question_{{ question.id }}"
+                   value = "A">
+            {{ question.option_a }}
+        </label>
+        <br>
+        <label>
+            <input type = 'radio'
+                name = 'question_{{ question.id }}'
+                value = "B">
+            {{ question.option_b }}
+        </label>
+        <br>
+        <label>
+            <input type = "radio"
+                   name = 'question_{{ question.id }}'
+                   value = "D">
+            {{ question.option_d }}
+        </label>
+    </div>
+    {% endfor %}
+    <div class = 'submit-button'>
+        <button type = "submit">
+            SUBMIT TEST
+        </button>
+    </div>
+</form>
+<script>
+    let time = {{ test.duration }} * 60;
+    let timer = setInterval(function() {
+        let minutes = Math.floor(time /60);
+        let seconds = time % 60;
+        document.getElementById("timer").innerHTML = 
+            minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
+        time--;
+        if(time < 0){
+            clearInterval(timer);
+            document.querySelector('form').submit();
+        }
+    } , 1000);
+</script>
+{% endblock %}

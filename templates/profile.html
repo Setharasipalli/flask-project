@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Profile</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/auth.css') }}">
+    
+</head>
+<body>
+
+<div class="container">
+    <div class="card">
+        <h1>Profile</h1>
+        <!-- Flash messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            {% for category, message in messages %}
+              <div class="alert {{ category }}">
+                {{ message }}
+              </div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+
+        <form method="POST" action = "" enctype="multipart/form-data">
+            {{ form.hidden_tag() }}
+            {% if current_user.profile_pic %}
+              <div class = "profile_image">
+                <img id = "preview"
+                src = "{{url_for('static' , filename = 'uploads/' + current_user.profile_pic)}}" alt = "profile">
+              </div>
+              <button type = 'submit' name ='remove_profile' value ='1'>Remove</button>
+            {% else %}
+              <div class = "profile-letter" id = "profileLetter">
+                {{ current_user.username[0]|upper }}
+              </div>
+            {% endif %}
+            {{ form.submit }}
+            {{ form.username }}
+            {{ form.email}}
+            {{ form.profile_pic(id="profile_pic" , style="display:none;")}}
+        </form>
+
+        <form action = "{{url_for('logout')}}" method="POST">
+        <button type = "submit" >logout</button>
+        </form>
+    </div>
+</div>
+<script>
+  const profilePicinput = document.getElementById("profile_pic");
+  const preview = document.getElementById("preview");
+  const profileLetter = document.getElementById('profileLetter');
+  if(preview){
+    preview.addEventListener("click" , function(){
+          profilePicinput.click();
+    });
+}
+if (profileLetter){
+   profileLetter.addEventListener("click" , function(){
+         profilePicinput.click();
+  });
+}
+  profilePicinput.addEventListener("change" , function(){
+    const file = this.files[0]
+    if(file) {
+      const reader = new FileReader();
+
+      reader.onload = function(event){
+        if (preview) {
+          preview.src = event.target.result;
+        } else{
+            profileLetter.style.backgroundImage =
+            "url("+event.target.result+")";
+            profileLetter.innerHTML = "";
+          }
+      };
+      reader.readAsDataURL(file)
+    }
+  });
+</script>
+
+</body>
+</html>
